@@ -43,7 +43,7 @@
 // Only define one driver, the other ones must be commented out
 //#define ILI9341_DRIVER       // Generic driver for common displays
 //#define ILI9341_2_DRIVER     // Alternative ILI9341 driver, see https://github.com/Bodmer/TFT_eSPI/issues/1172
-//#define ST7735_DRIVER      // Define additional parameters below for this display
+#define ST7735_DRIVER      // Define additional parameters below for this display
 //#define ILI9163_DRIVER     // Define additional parameters below for this display
 //#define S6D02A1_DRIVER
 //#define RPI_ILI9486_DRIVER // 20MHz maximum SPI
@@ -51,7 +51,7 @@
 //#define ILI9481_DRIVER
 //#define ILI9486_DRIVER
 //#define ILI9488_DRIVER     // WARNING: Do not connect ILI9488 display SDO to MISO if other devices share the SPI bus (TFT SDO does NOT tristate when CS is high)
-#define ST7789_DRIVER      // Full configuration option, define additional parameters below for this display
+//#define ST7789_DRIVER      // Full configuration option, define additional parameters below for this display
 //#define ST7789_2_DRIVER    // Minimal configuration option, define additional parameters below for this display
 //#define R61581_DRIVER
 //#define RM68140_DRIVER
@@ -73,15 +73,15 @@
 // Try ONE option at a time to find the correct colour order for your display
 
 //  #define TFT_RGB_ORDER TFT_RGB  // Colour order Red-Green-Blue
-//  #define TFT_RGB_ORDER TFT_BGR  // Colour order Blue-Green-Red
+#define TFT_RGB_ORDER TFT_BGR  // Colour order Blue-Green-Red
 
 // For M5Stack ESP32 module with integrated ILI9341 display ONLY, remove // in line below
 
 // #define M5STACK
 
 // For ST7789, ST7735, ILI9163 and GC9A01 ONLY, define the pixel width and height in portrait orientation
-#define TFT_WIDTH 135
-#define TFT_HEIGHT  240
+#define TFT_WIDTH 80
+#define TFT_HEIGHT  160
 #define CGRAM_OFFSET
 // #define TFT_WIDTH  172 // ST7789 172 x 320
 // #define TFT_WIDTH  240 // ST7789 240 x 240 and 240 x 320
@@ -103,7 +103,7 @@
 // #define ST7735_GREENTAB2
 // #define ST7735_GREENTAB3
 // #define ST7735_GREENTAB128    // For 128 x 128 display
-// #define ST7735_GREENTAB160x80 // For 160 x 80 display (BGR, inverted, 26 offset)
+#define ST7735_GREENTAB160x80 // For 160 x 80 display (BGR, inverted, 26 offset)
 // #define ST7735_REDTAB
 // #define ST7735_BLACKTAB
 // #define ST7735_REDTAB160x80   // For 160 x 80 display with 24 pixel offset
@@ -203,11 +203,11 @@
 // The hardware SPI can be mapped to any pins
 
 #define TFT_MISO -1
-#define TFT_MOSI 35
-#define TFT_SCLK 36
-#define TFT_CS   34  // Chip select control pin
-#define TFT_DC   37  // Data Command control pin
-#define TFT_RST  38  // Reset pin (could connect to RST pin)
+#define TFT_MOSI 3
+#define TFT_SCLK 5
+#define TFT_CS   4  // Chip select control pin
+#define TFT_DC   2  // Data Command control pin
+#define TFT_RST  1  // Reset pin (could connect to RST pin)
 #define TOUCH_CS   -1
 //#define TFT_RST  -1  // Set TFT_RST to -1 if display RESET is connected to ESP32 board RST
 
@@ -341,7 +341,8 @@
 // #define SPI_FREQUENCY  10000000
 // #define SPI_FREQUENCY  20000000
 // #define SPI_FREQUENCY  27000000
-#define SPI_FREQUENCY  40000000
+// #define SPI_FREQUENCY  40000000
+#define SPI_FREQUENCY  50000000
 // #define SPI_FREQUENCY  55000000 // STM32 SPI1 only (SPI2 maximum is 27MHz)
 // #define SPI_FREQUENCY  80000000
 
